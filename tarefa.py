@@ -12,6 +12,12 @@ def buscar_tarefas():
             'id': 2,
             'nome': 'Aprender Python',
             'descricao': 'Aprender Python para programar Api',
+            'status': 'Concluida'
+        },
+        {
+            'id': 3,
+            'nome': 'Aprender a biblioteca Flask',
+            'descricao': 'Aprender Flask para programar',
             'status': 'Pendente'
         }
     ]
