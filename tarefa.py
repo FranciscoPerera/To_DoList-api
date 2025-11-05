@@ -19,7 +19,7 @@ def buscar_tarefas():
 
     return jsonify(todos)
 
-def buscar_tarefa():
+def buscar_tarefa(id):
     # Conecta no banco 
     conect = get_conexao()
     cursor = conect.cursor(cursor_factory=RealDictCursor)
