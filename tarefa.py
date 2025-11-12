@@ -74,7 +74,7 @@ def atualizar_tarefa(tarefa_id, name, description):
     conect = get_conexao()
     cursor = conect.cursor()
     cursor.execute(
-        "UPDATE todos SET name, description = %s WHERE id = %s",
+        "UPDATE todos SET name = %s, description = %s WHERE id = %s",
         (name, description, tarefa_id)
     )
 
