@@ -11,7 +11,7 @@ def buscar_tarefas():
         "SELECT id, name, description FROM todos"
     )
 
-    # Busca o s dados e armazena na variavel
+    # Busca os dados e armazena na variavel
     todos = cursor.fetchall()
 
     # Fecha as conexoes
@@ -44,6 +44,38 @@ def criar_tarefa(name, description):
     cursor.execute(
         "INSERT INTO todos (name, description) VALUES (%s, %s)",
         (name, description)
+    )
+
+    # Envia as modificações para o banco de dados
+    conect.commit()
+
+    # Encerra as conexoes com o banco de dados
+    cursor.close()
+    conect.close()
+
+def apagar_tarefa(tarefa_id):
+    # Conecta no banco 
+    conect = get_conexao()
+    cursor = conect.cursor()
+    cursor.execute(
+        "DELETE FROM todos WHERE id = %s",
+        (tarefa_id,)
+    )
+
+    # Envia as modificações para o banco de dados
+    conect.commit()
+
+    # Encerra as conexoes com o banco de dados
+    cursor.close()
+    conect.close()
+
+def atualizar_tarefa(tarefa_id, name, description):
+    # Conecta no banco 
+    conect = get_conexao()
+    cursor = conect.cursor()
+    cursor.execute(
+        "UPDATE todos SET name, description = %s WHERE id = %s",
+        (name, description, tarefa_id)
     )
 
     # Envia as modificações para o banco de dados
